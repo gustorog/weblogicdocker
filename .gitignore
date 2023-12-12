@@ -1,0 +1,10 @@
+# Enterprise Java Archive archive
+*.ear
+# Web Application archive (Java-based web app)
+*.war
+
+#compress
+*.zip
+*.tar.gz
+
+.DS_Store

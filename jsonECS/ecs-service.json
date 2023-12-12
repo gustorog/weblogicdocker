@@ -1,0 +1,20 @@
+{
+  "cluster": "your-ecs-cluster-name",
+  "serviceName": "your-ecs-service-name",
+  "taskDefinition": "your-task-family:your-task-revision",
+  "launchType": "FARGATE",
+  "desiredCount": 1,
+  "loadBalancers": [
+    {
+      "targetGroupArn": "your-existing-target-group-arn",
+      "containerName": "your-container-name",
+      "containerPort": 80
+    }
+  ],
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": ["subnet-xxxxxxxxxxxxxxxxx", "subnet-yyyyyyyyyyyyyyyyy"],
+      "securityGroups": ["sg-xxxxxxxxxxxxxxxxx"]
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "family": "your-task-family",
+  "containerDefinitions": [
+    {
+      "name": "your-container-name",
+      "image": "ecr-repository-uri:tag",
+      "cpu": 1024,
+      "memory": 2048,
+      "portMappings": [
+        {
+          "containerPort": 8005,
+          "hostPort": 8005,
+          "protocol": "tcp"
+        },
+        {
+          "containerPort": 8006,
+          "hostPort": 8006,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "healthCheck": {
+                "command": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:8005/WebAppPath || exit 1"
+                ],
+                "interval": 30,
+                "timeout": 5,
+                "retries": 3,
+                "startPeriod": 120
+            }
+    }
+    // Add more container definitions if needed
+  ],
+  "networkMode": "awsvpc",
+  "executionRoleArn": "your-task-execution-role-arn",
+  "requiresCompatibilities": ["EC2","FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "tags": [
+        {
+        "key": "Name",
+        "value": "appwls"
+        }
+  ]
+}
